@@ -1,14 +1,17 @@
 from django.shortcuts import render
-
+from .models import Team
 # Create your views here.
 
 
 def home(request) :
-    return render(request, 'pages/home.html')
+    members = Team.objects.all() 
+    context = {'members':members}
+    return render(request, 'pages/home.html',context)
 
 
 
 def about(request) : 
+
     return render(request, 'pages/about.html')
 
 
@@ -22,3 +25,5 @@ def services(request) :
 
 def cars(request) : 
     return render(request, 'pages/cars.html')
+
+
